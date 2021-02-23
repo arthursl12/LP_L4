@@ -1,0 +1,14 @@
+(a) Os objetos passados para este método precisam possuir os métodos isNotEmpty
+e remove, ambos com a mesma interface (quantidade e tipos de argumentos, por 
+exemplo) que utilizada nesse método removeAll
+
+(b) Duck Typing é uma conceito utilizado por algumas linguagens de programação
+para definir se um objeto pode ou não ser utilizado por um método. Segundo ele,
+"se algo anda como um pato e grasna como um pato, então deve ser um pato", ou 
+seja, tendo o mesmo comportamento e interface de um pato, pode ser usado em 
+funções que usam o pato. 
+
+No caso do método do enunciado, não importa qual o objeto seja passado, desde 
+que ele possua os dois métodos usados, ou seja, que ele garanta o contrato que 
+discutimos no item "a", ele pode ser usado neste método, visto que Python aplica
+o duck typing.
