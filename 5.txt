@@ -1,0 +1,12 @@
+######## Precisa conferir a chamada da linha 26, para influenciar na 9
+1. (i) Pavao is an animal
+2. (i) Tigre is a mammal
+3. (i) Krypto is a dog
+4. (i) Pavao, which  is an animal , is  eating.
+5. (i) Tigre, which  is a mammal , is  suckingmilk.
+6. (i) Tigre, which  is an animal , is  eating.
+7. (i) Krypto is  barking  rather  loudly.
+8. (i) Krypto, which  is a mammal , is  suckingmilk.
+9. (i) Krypto barks  when it eats. Krypto is  barking  rather  loudly.
+10. (ii)
+11. (i) Krypto is  barking  rather  loudly.
