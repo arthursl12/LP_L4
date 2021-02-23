@@ -1,0 +1,5 @@
+O Problema do Diamante advém da herança múltipla. Um objeto é filho de dois (ou
+mais) outros que possuem um mesmo método. O objeto-filho não implementa este 
+método, logo o método da classe-pai deve ser usado, mas a implementação de qual
+classe-pai será usada? Essa ambiguidade é o Problema do Diamante. Algumas 
+linguagens de programação possuem heurísticas para mitigar esse problema.
