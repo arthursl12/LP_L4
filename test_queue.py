@@ -27,13 +27,13 @@ class TestNode:
 class TestQueue:
     def test_empty(self):
         s = Queue()
-        assert s.isNotEmpty() == False
+        assert s.isEmpty()
         
         s.add(1)
-        assert s.isNotEmpty() == True
+        assert s.isEmpty() == False
         
         s.remove()
-        assert s.isNotEmpty() == False
+        assert s.isEmpty()
         
     def test_add_remove(self):
         s = Queue()
@@ -53,16 +53,16 @@ class TestQueue:
         s.add("Baltimore")
         s.add("Lord")
         s.add("Sir")
-        assert s.isNotEmpty()
+        assert s.isEmpty() == False
         
         assert s.remove() == "Baltimore"
-        assert s.isNotEmpty()
+        assert s.isEmpty() == False
         
         assert s.remove() == "Lord"
-        assert s.isNotEmpty()
+        assert s.isEmpty() == False
         
         assert s.remove() == "Sir"
-        assert s.isNotEmpty() == False
+        assert s.isEmpty()
     
     def test_getSmaller_empty(self):
         s = Queue()
@@ -74,7 +74,7 @@ class TestQueue:
         s.add("A")
         s.add("B")
         
-        assert s.isNotEmpty()
+        assert s.isEmpty() == False
         assert s.getSmaller() == "A"
     
     def test_getSmaller(self):
@@ -87,7 +87,7 @@ class TestQueue:
         s.add("K")
         s.add("A")
         
-        assert s.isNotEmpty()
+        assert s.isEmpty() == False
         assert s.getSmaller() == "A"
     
     def test_getSmaller_all_equal(self):
@@ -95,7 +95,7 @@ class TestQueue:
         s.add("ABC")
         s.add("ABC")
         s.add("ABC")
-        assert s.isNotEmpty()
+        assert s.isEmpty() == False
         assert s.getSmaller() == "ABC"
 
 class TestArquivosIguais:

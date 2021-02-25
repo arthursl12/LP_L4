@@ -27,8 +27,8 @@ class Stack:
                 nodeAtual = nodeAtual.n
             nodeAtual.n = n1
     
-    def isNotEmpty(self):
-        return not(self.initial == Node())
+    def isEmpty(self):
+        return (self.initial == Node())
     
     def remove(self):
         if (self.initial == Node()):
