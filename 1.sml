@@ -1,9 +1,3 @@
-(* 
-TODO: 
-    - Tratamento de exceções
-    - Testes
-*)
-
 signature MATH =
 sig
     type number = int
@@ -18,6 +12,8 @@ struct
     type number = int
     val halfPi = Math.pi/2.0
     exception NegativoError
+    exception ZeroToZero
+  
 
     fun fact 0 = 1
       | fact n = 
@@ -28,14 +24,25 @@ struct
     fun pow (b,0) = 
             if b < 0 then 
                raise NegativoError 
+            else if b = 0 then
+               raise ZeroToZero
             else 
+               1
+      | pow (b,1) = 
+            if b < 0 then
+                raise NegativoError
+            else
                b
       | pow (b,n) = 
             if n < 0 orelse b < 0 then
                 raise NegativoError
             else
-               b + pow (b, n-1)
-    fun double n = 2 * n
+               b * pow (b, n-1)
+    fun double n = 
+            if n < 0 then
+                raise NegativoError
+            else
+              2 * n
 end;
 
 exception AssertionError
@@ -53,6 +60,58 @@ fun assertR (e1,expected) =
 ;
 
 
+
+fun useMyMathLib (n, funct) =
+  (case funct of
+    "pow" => print (Int.toString (MyMathLib.pow(n,n)))
+  | "double" => print (Int.toString (MyMathLib.double(n)))
+  | "fact" => print (Int.toString (MyMathLib.fact(n)))
+  | _ => raise Match)
+  handle NegativoError => print "Não posso lidar com números negativos"
+  | ZeroToZero => print "Exceção";
+
+
+
+
 MyMathLib.pow(2,3);
+print "Pow";
 assert(MyMathLib.pow(2,3), 8);
-assert(MyMathLib.pow(2,~3), 0.125);
+assert(MyMathLib.pow(2,0), 1);
+assert(MyMathLib.pow(2,1), 2);
+assert(MyMathLib.pow(1,1), 1);
+assert(MyMathLib.pow(1,54), 1);
+assert(MyMathLib.pow(0,54), 0);
+assert(MyMathLib.pow(1,0), 1);
+assert(MyMathLib.pow(0,0), 54);
+
+print "Double";
+assert(MyMathLib.double(0), 0);
+assert(MyMathLib.double(1), 2);
+assert(MyMathLib.double(55), 110);
+
+print "Fact";
+assert(MyMathLib.fact(0), 1);
+assert(MyMathLib.fact(1), 1);
+assert(MyMathLib.fact(2), 2);
+assert(MyMathLib.fact(3), 6);
+assert(MyMathLib.fact(10), 3628800);
+
+print "use - Pow";
+useMyMathLib(~1, "pow");
+useMyMathLib(0, "pow");
+useMyMathLib(1, "pow");
+useMyMathLib(5, "pow");
+
+print "use - double";
+useMyMathLib(5, "double");
+useMyMathLib(0, "double");
+useMyMathLib(~1, "double");
+
+print "use - fact";
+useMyMathLib(5, "fact");
+useMyMathLib(0, "fact");
+useMyMathLib(~1, "fact");
+
+
+
+
