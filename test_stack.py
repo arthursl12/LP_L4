@@ -26,13 +26,13 @@ class TestNode:
 class TestStack:
     def test_empty(self):
         s = Stack()
-        assert s.isEmpty()
+        assert not s.isNotEmpty()
         
         s.add(1)
-        assert s.isEmpty() == False
+        assert s.isNotEmpty()
         
         s.remove()
-        assert s.isEmpty()
+        assert not s.isNotEmpty()
         
     def test_add_remove(self):
         s = Stack()
@@ -52,16 +52,16 @@ class TestStack:
         s.add("Baltimore")
         s.add("Lord")
         s.add("Sir")
-        assert s.isEmpty() == False
+        assert s.isNotEmpty()
         
         assert s.remove() == "Sir"
-        assert s.isEmpty() == False
+        assert s.isNotEmpty()
         
         assert s.remove() == "Lord"
-        assert s.isEmpty() == False
+        assert s.isNotEmpty()
         
         assert s.remove() == "Baltimore"
-        assert s.isEmpty()
+        assert not s.isNotEmpty()
 
 class TestArquivosIguais:
     def test_compara(self):

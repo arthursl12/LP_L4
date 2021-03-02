@@ -12,8 +12,6 @@ struct
     type number = int
     val halfPi = Math.pi/2.0
     exception NegativoError
-    exception ZeroToZero
-  
 
     fun fact 0 = 1
       | fact n = 
@@ -24,8 +22,6 @@ struct
     fun pow (b,0) = 
             if b < 0 then 
                raise NegativoError 
-            else if b = 0 then
-               raise ZeroToZero
             else 
                1
       | pow (b,1) = 
@@ -63,18 +59,17 @@ fun assertR (e1,expected) =
 
 fun useMyMathLib (n, funct) =
   (case funct of
-    "pow" => print (Int.toString (MyMathLib.pow(n,n)))
-  | "double" => print (Int.toString (MyMathLib.double(n)))
-  | "fact" => print (Int.toString (MyMathLib.fact(n)))
+    "pow" => print ((Int.toString (MyMathLib.pow(n,n))) ^ " ")
+  | "double" => print ((Int.toString (MyMathLib.double(n))) ^ " ")
+  | "fact" => print ((Int.toString (MyMathLib.fact(n)))  ^ " ")
   | _ => raise Match)
-  handle NegativoError => print "Não posso lidar com números negativos"
-  | ZeroToZero => print "Exceção";
+  handle NegativoError => print "Não posso lidar com números negativos ";
 
 
 
 
 MyMathLib.pow(2,3);
-print "Pow";
+print "Pow\n";
 assert(MyMathLib.pow(2,3), 8);
 assert(MyMathLib.pow(2,0), 1);
 assert(MyMathLib.pow(2,1), 2);
@@ -82,35 +77,38 @@ assert(MyMathLib.pow(1,1), 1);
 assert(MyMathLib.pow(1,54), 1);
 assert(MyMathLib.pow(0,54), 0);
 assert(MyMathLib.pow(1,0), 1);
-assert(MyMathLib.pow(0,0), 54);
+assert(MyMathLib.pow(0,0), 1);
+assert(MyMathLib.pow(0,1), 0);
+assert(MyMathLib.pow(0,28934), 0);
 
-print "Double";
+print "Double\n";
 assert(MyMathLib.double(0), 0);
 assert(MyMathLib.double(1), 2);
 assert(MyMathLib.double(55), 110);
 
-print "Fact";
+print "Fact\n";
 assert(MyMathLib.fact(0), 1);
 assert(MyMathLib.fact(1), 1);
 assert(MyMathLib.fact(2), 2);
 assert(MyMathLib.fact(3), 6);
 assert(MyMathLib.fact(10), 3628800);
 
-print "use - Pow";
+print "use - Pow\n";
 useMyMathLib(~1, "pow");
 useMyMathLib(0, "pow");
 useMyMathLib(1, "pow");
 useMyMathLib(5, "pow");
 
-print "use - double";
+print "use - double\n";
 useMyMathLib(5, "double");
 useMyMathLib(0, "double");
 useMyMathLib(~1, "double");
 
-print "use - fact";
+print "use - fact\n";
 useMyMathLib(5, "fact");
 useMyMathLib(0, "fact");
 useMyMathLib(~1, "fact");
+print "=============FIM DOS TESTES\n";
 
 
 

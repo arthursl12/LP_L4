@@ -1,3 +1,5 @@
+import traceback
+
 class FormulaError(Exception):
     pass
 
@@ -31,9 +33,15 @@ def evaluate(src1, op, src2):
         return src1 / src2
     
 def main():
-    entrada = input()
-    src1, op, src2 = parse_input(entrada)
-    print(evaluate(src1,op,src2))
+    entradaValida = True
+    while (entradaValida):
+        try:
+            entrada = input()
+            src1, op, src2 = parse_input(entrada)
+            print(evaluate(src1,op,src2))
+        except:
+            entradaValida = False
+            traceback.print_exc()
 
 if __name__ == "__main__":
     main()
