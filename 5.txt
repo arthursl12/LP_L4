@@ -1,4 +1,3 @@
-######## Precisa conferir a chamada da linha 26, para influenciar na 9
 1. (i) Pavao is an animal
 2. (i) Tigre is a mammal
 3. (i) Krypto is a dog
